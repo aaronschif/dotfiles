@@ -1,0 +1,83 @@
+use_xft yes
+
+xftfont Mono:size=8
+
+xftalpha 1
+
+update_interval 2.0
+
+total_run_times 0
+
+own_window yes
+own_window_transparent yes
+#own_window_type override
+own_window_type desktop
+#own_window_type normal #use this if you want a nice shadow to appear around conky
+
+# If own_window is yes, these window manager hints may be used
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 170 400
+
+# Maximum width
+#maximum_width 220
+
+# Draw shades?
+draw_shades yes
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Draw borders around graphs
+draw_graph_borders no
+
+# Stippled borders?
+stippled_borders 8
+
+# border width
+# border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color black
+default_outline_color white
+
+# Text alignment, other possible values are commented
+alignment top_left
+#alignment top_left
+#alignment bottom_left
+#alignment bottom_right
+#alignment none
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 10
+gap_y 32
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+text_buffer_size 1024
+
+TEXT
+${color 99C3FF}SYSTEM INFO:${color} ${hr}
+${alignr 70}${font Arial Black:size=12}${color CCCCCC}${time %H:%M}${color}${font}
+${alignr}${color 99CCFF}${time %A %d %B %Y}${color}
+Host:$alignr$nodename
+Uptime:$alignr$uptime
+RAM:$alignr$mem / $memmax
+Load:$alignr$loadavg
+CPU:$alignr${cpu cpu0}% / ${cpu cpu1}%
+Desktop:$alignr${desktop_name} / ${desktop_number}
+Wise Cow:
+${execi 300 fortune | cowsay }
