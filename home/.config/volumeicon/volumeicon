@@ -17,3 +17,4 @@ mute=XF86AudioMute
 
 [Alsa]
 card=default
+channel=Master
