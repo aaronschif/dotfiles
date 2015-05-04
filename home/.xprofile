@@ -1,11 +1,1 @@
 #!/bin/bash
-
-if which xprofile > /dev/null
-then
-  xprofile auto
-fi
-
-if which feh > /dev/null
-then
-  feh --bg-fill --randomize ~/Wallpapers/*
-fi
