@@ -343,6 +343,11 @@
         <command>dm-tool lock</command>
       </action>
     </keybind>
+    <keybind key="W-Return">
+      <action name="Execute">
+        <command>x-terminal-emulator</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
