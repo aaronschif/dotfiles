@@ -80,4 +80,4 @@ Load:$alignr$loadavg
 CPU:$alignr${cpu cpu0}% / ${cpu cpu1}%
 Desktop:$alignr${desktop_name} / ${desktop_number}
 Wise Cow:
-${execi 300 fortune | cowsay }
+${execi 300 fortune | wisecow_fmt | cowsay }

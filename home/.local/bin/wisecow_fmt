@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+
+import re
+import sys
+indent = re.compile("\n\t")
+single_newline = re.compile('\n(?!\n)')
+chat_log_line = re.compile('\n(?=<.*>)')
+qa_line = re.compile('\n(?=A:|Q:)')
+
+text = ''.join(sys.stdin.readlines())
+
+text = qa_line.sub('\n\n', text)
+text = chat_log_line.sub('\n\n', text)
+text = indent.sub(" ", text)
+text = text.replace('\t--', '\n\n--')
+text = single_newline.sub(' ', text)
+
+print text.strip()
