@@ -4,4 +4,4 @@ export GNOME_KEYRING_CONTROL
 export SSH_AUTH_SOCK
 export GNOME_KEYRING_PID
 
-export PATH=~/.local/bin/:"$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
