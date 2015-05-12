@@ -1,0 +1,9 @@
+[user]
+	name = Aaron Schif
+	email = aaronschif@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[push]
+	default = simple
