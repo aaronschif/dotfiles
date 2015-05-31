@@ -1,0 +1,9 @@
+: ${KSU_VAGRANT_PREFIX:=~/Projects/kstate}
+: ${KSU_VAGRANT_SOURCE:=~/Projects/kstate/python-vm}
+
+if [[ `pwd` == $KSU_VAGRANT_PREFIX* ]]
+then
+    export VAGRANT_CWD=$(eval echo $KSU_VAGRANT_SOURCE)
+else
+    unset VAGRANT_CWD
+fi

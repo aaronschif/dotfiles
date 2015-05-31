@@ -94,3 +94,6 @@ setopt prompt_subst
 PROMPT="%F{green}%n$host%F{blue} : %F{green}%3~ %(20l,
 ,)%F{blue}%#%F{reset_color} "
 RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(pyvirt)%(0?,, %F{blue}?%F{green}%?) \$(_gitprompt)"
+
+export SUDO_PROMPT="$fg_bold[yellow][sudo password]$reset_color "
+which vimpager &> /dev/null && export PAGER=vimpager
