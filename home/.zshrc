@@ -1,39 +1,24 @@
 setopt histignorealldups sharehistory
 
-bindkey -v
+bindkey -e
 
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
+source ~/Build/antigen/antigen.zsh
+antigen bundle dgladkov/zsh-pip-completion
+antigen bundle zsh-users/zsh-completions src
+antigen apply
+
+fpath=("$HOME/.zsh_funcs" $fpath)
+autoload -U zcompile_all
+
+autoload -U _ksu_vagrant
+precmd_functions=( _ksu_vagrant $precmd_functions )
+
 autoload -Uz compinit
 compinit
-
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:*' unstagedstr '*'
-zstyle ':vcs_info:git:*' formats '%F{blue}GIT%F{green}%b|%m%u%c %a'
-precmd_functions=( vcs_info $precmd_functions )
-zstyle ':vcs_info:git*+set-message:*' hooks git-st
-function +vi-git-st() {
-    local ahead behind remote
-    local -a gitstatus
-
-    remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} \
-        --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
-
-    if [[ -n ${remote} ]] ; then
-        ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
-        (( $ahead )) && gitstatus+=( "${c3}+${ahead}${c2}" )
-
-        behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
-        (( $behind )) && gitstatus+=( "${c4}-${behind}${c2}" )
-
-        hook_com[branch]="${hook_com[branch]} [${remote} ${(j:/:)gitstatus}]"
-    fi
-}
 
 setopt no_auto_menu
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -56,11 +41,27 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 autoload -U colors && colors
 
-
 alias ls='ls --color=auto --classify'
 alias la='ls --almost-all'
 alias l='ls'
 alias ll='ls -l --human-readable'
+
+function compile_all() {
+    for dir in $fpath
+    do
+        if test -d  $dir -a -w $dir
+        then
+            for file in $(find $dir -maxdepth 1 -type f -not -name '*.*')
+            do
+                if test ! -e "$file.zwc"
+                then
+                    echo $file
+                    zcompile $file
+                fi
+            done
+        fi
+    done
+}
 
 precmd_functions=( _set_title_cmd $precmd_functions )
 preexec_functions=( _set_title_exec $preexec_functions )
@@ -72,6 +73,10 @@ else
   function _set_title_cmd { print -Pn "\e]0;%2~\a" }
   function _set_title_exec { print -Pn "\e]0;%2~ $1\a" }
 fi
+
+function _gitprompt {
+    libgitprompt 2>> /tmp/gitpromptlog || echo -n GITERROR
+}
 
 if [ -n "$SSH_CONNECTION" ]
 then
@@ -88,4 +93,4 @@ function pyvirt {
 setopt prompt_subst
 PROMPT="%F{green}%n$host%F{blue} : %F{green}%3~ %(20l,
 ,)%F{blue}%#%F{reset_color} "
-RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)$(pyvirt)%(0?,, %F{blue}?%F{green}%?)\${vcs_info_msg_0_}"
+RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(pyvirt)%(0?,, %F{blue}?%F{green}%?) \$(_gitprompt)"

@@ -7,3 +7,5 @@
 	ui = true
 [push]
 	default = simple
+[libgitprompt]
+	text = %F{{blue}}GIT%F{{green}}{0}{1}{2}{3}{4}{5}{6}{7}
