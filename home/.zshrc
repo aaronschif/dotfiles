@@ -48,23 +48,6 @@ alias la='ls --almost-all'
 alias l='ls'
 alias ll='ls -l --human-readable'
 
-function compile_all() {
-    for dir in $fpath
-    do
-        if test -d  $dir -a -w $dir
-        then
-            for file in $(find $dir -maxdepth 1 -type f -not -name '*.*')
-            do
-                if test ! -e "$file.zwc"
-                then
-                    echo $file
-                    zcompile $file
-                fi
-            done
-        fi
-    done
-}
-
 precmd_functions=( _set_title_cmd $precmd_functions )
 preexec_functions=( _set_title_exec $preexec_functions )
 if [ -n "$SSH_CONNECTION" ]

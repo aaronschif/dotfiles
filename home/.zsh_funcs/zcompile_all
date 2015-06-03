@@ -1,22 +1,28 @@
 
 zcompile $HOME/.zshrc
 
+let "x=0"
+
 for dir in $fpath
 do
     if test -d  $dir -a -w $dir
     then
-        echo Searching $dir
+        echo "Searching $dir"
         for file in $(find $dir/ -maxdepth 1 -type f -not -name '*.*')
         do
-            if test ! -e "$file.zwc"
+            if test ! -e "$file.zwc" -o "$file" -nt "$file.zwc"
             then
-                echo Compiling $file
+                echo "  Compiling $file"
+                let "x++"
                 zcompile $file
             else
-                echo Already compiled $file
+                : #echo "  Already compiled $file"
             fi
         done
     else
-        echo Skipping $dir
+        : #echo "Skipping $dir"
     fi
 done
+
+echo
+echo "Compiled $x files."
