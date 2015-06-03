@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo openconnect vpn.net.k-state.edu --authgroup=OMEVPN --user=aaronschif

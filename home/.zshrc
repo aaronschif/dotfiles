@@ -6,6 +6,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
+export PATH="$HOME/.local/bin/:$PATH"
+
 source ~/Build/antigen/antigen.zsh
 antigen bundle dgladkov/zsh-pip-completion
 antigen bundle zsh-users/zsh-completions src
@@ -68,10 +70,10 @@ preexec_functions=( _set_title_exec $preexec_functions )
 if [ -n "$SSH_CONNECTION" ]
 then
   function _set_title_cmd { print -Pn "\e]0;%n@%m:%2~\a" }
-  function _set_title_exec { print -Pn "\e]0;%n@%m:%2~ $1\a" }
+  function _set_title_exec { print -Pn "\e]0;%n@%m:%2~ ${1/[ ]*/}\a"}
 else
   function _set_title_cmd { print -Pn "\e]0;%2~\a" }
-  function _set_title_exec { print -Pn "\e]0;%2~ $1\a" }
+  function _set_title_exec { print -Pn "\e]0;%2~ ${1/[ ]*/}\a"}
 fi
 
 function _gitprompt {
@@ -83,17 +85,22 @@ then
   host="@%M"
 fi
 
-function pyvirt {
+function _pyvirt {
   if [ -n "$VIRTUAL_ENV" ]
   then
     echo " %F{blue}PY%F{green}`basename $VIRTUAL_ENV`"
   fi
 }
 
+export ANSIBLE_NOCOWS=true
+export VIRTUAL_ENV_DISABLE_PROMPT=true
+export WORKON_HOME=$HOME/.cache/virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
 setopt prompt_subst
-PROMPT="%F{green}%n$host%F{blue} : %F{green}%3~ %(20l,
+PROMPT="%F{green}%n$host %F{green}%3~ %(20l,
 ,)%F{blue}%#%F{reset_color} "
-RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(pyvirt)%(0?,, %F{blue}?%F{green}%?) \$(_gitprompt)"
+RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(_pyvirt)%(0?,, %F{blue}?%F{green}%?) \$(_gitprompt)"
 
 export SUDO_PROMPT="$fg_bold[yellow][sudo password]$reset_color "
 which vimpager &> /dev/null && export PAGER=vimpager
