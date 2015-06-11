@@ -6,17 +6,12 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-export PATH="$HOME/.local/bin/:$PATH"
-
 source ~/Build/antigen/antigen.zsh
 antigen bundle dgladkov/zsh-pip-completion
 antigen bundle zsh-users/zsh-completions src
 antigen apply
 
-fpath=("$HOME/.zsh_funcs" $fpath)
-autoload -U zcompile_all
-
-autoload -U _ksu_vagrant
+autoload -U _ksu_vagrant _gitprompt
 precmd_functions=( _ksu_vagrant $precmd_functions )
 
 autoload -Uz compinit
@@ -59,10 +54,6 @@ else
   function _set_title_exec { print -Pn "\e]0;%2~ ${1/[ ]*/}\a"}
 fi
 
-function _gitprompt {
-    libgitprompt 2>> /tmp/gitpromptlog || echo -n GITERROR
-}
-
 if [ -n "$SSH_CONNECTION" ]
 then
   host="@%M"
@@ -77,8 +68,11 @@ function _pyvirt {
 
 export ANSIBLE_NOCOWS=true
 export VIRTUAL_ENV_DISABLE_PROMPT=true
-export WORKON_HOME=$HOME/.cache/virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=$HOME/.cache/virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 setopt prompt_subst
 PROMPT="%F{green}%n$host %F{green}%3~ %(20l,

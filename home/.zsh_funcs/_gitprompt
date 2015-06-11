@@ -1,0 +1,8 @@
+# libgitprompt 2>> /tmp/gitpromptlog || echo -n GITERROR
+
+local git=
+if git=`/home/aaron/Projects/dgitprompt/dgitprompt -q`
+then
+    echo "%F{blue}GIT%F{green}$git"
+fi
+# /home/aaron/Downloads/dgitprompt simple 2>> /tmp/dgitpromptlog || echo -n GITERROR
