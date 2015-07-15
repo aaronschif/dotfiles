@@ -1,7 +1,13 @@
-# libgitprompt 2>> /tmp/gitpromptlog || echo -n GITERROR
+local BIN=/home/aaron/Projects/dgitprompt/dgitprompt
+
+if ! test -f "$BIN"
+then
+    function _gitprompt { return }
+    return
+fi
 
 local git=
-if git=`/home/aaron/Projects/dgitprompt/dgitprompt -q`
+if git=`$BIN -q`
 then
     echo "%F{blue}GIT%F{green}$git"
 fi

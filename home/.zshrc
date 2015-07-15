@@ -81,3 +81,4 @@ RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(_pyvirt)%(0?,, %F{blue}?%F{green}%?) 
 
 export SUDO_PROMPT="$fg_bold[yellow][sudo password]$reset_color "
 which vimpager &> /dev/null && export PAGER=vimpager
+:
