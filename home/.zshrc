@@ -2,6 +2,10 @@ setopt histignorealldups sharehistory
 
 bindkey -e
 
+# reset arrays
+precmd_functions=()
+preexec_functions=()
+
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
@@ -12,7 +16,7 @@ antigen bundle zsh-users/zsh-completions src
 antigen apply
 
 autoload -U _ksu_vagrant _gitprompt
-precmd_functions=( _ksu_vagrant $precmd_functions )
+precmd_functions+=_ksu_vagrant
 
 autoload -Uz compinit
 compinit
@@ -43,16 +47,23 @@ alias la='ls --almost-all'
 alias l='ls'
 alias ll='ls -l --human-readable'
 
-precmd_functions=( _set_title_cmd $precmd_functions )
-preexec_functions=( _set_title_exec $preexec_functions )
+precmd_functions+=_set_title_cmd
+preexec_functions+=_set_title_exec
 if [ -n "$SSH_CONNECTION" ]
 then
   function _set_title_cmd { print -Pn "\e]0;%n@%m:%2~\a" }
-  function _set_title_exec { print -Pn "\e]0;%n@%m:%2~ ${1/[ ]*/}\a"}
+  function _set_title_exec { print -Pn "\e]0;%n@%m:%2~ \$(_short_function_name "$1" )\a"}
 else
   function _set_title_cmd { print -Pn "\e]0;%2~\a" }
-  function _set_title_exec { print -Pn "\e]0;%2~ ${1/[ ]*/}\a"}
+  function _set_title_exec { print -Pn "\e]0;%2~ \$(_short_function_name "$1" )\a"}
 fi
+
+function _short_function_name {
+    case "$1" in
+        sudo) echo -n "#$2";;
+        *) echo -n "$1";;
+    esac
+}
 
 if [ -n "$SSH_CONNECTION" ]
 then
@@ -71,8 +82,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=true
 # export WORKON_HOME=$HOME/.cache/virtualenvs
 # source /usr/local/bin/virtualenvwrapper.sh
 
+_pre_pyenv_path="$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+PATH="$_pre_pyenv_path"
 
 setopt prompt_subst
 PROMPT="%F{green}%n$host %F{green}%3~ %(20l,
