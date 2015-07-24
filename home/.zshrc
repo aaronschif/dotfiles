@@ -52,10 +52,10 @@ preexec_functions+=_set_title_exec
 if [ -n "$SSH_CONNECTION" ]
 then
   function _set_title_cmd { print -Pn "\e]0;%n@%m:%2~\a" }
-  function _set_title_exec { print -Pn "\e]0;%n@%m:%2~ \$(_short_function_name "$1" )\a"}
+  function _set_title_exec { print -Pn "\e]0;%n@%m:%2~ \$(_short_function_name \"$1\" )\a"}
 else
   function _set_title_cmd { print -Pn "\e]0;%2~\a" }
-  function _set_title_exec { print -Pn "\e]0;%2~ \$(_short_function_name "$1" )\a"}
+  function _set_title_exec { print -Pn "\e]0;%2~ \$(_short_function_name \"$1\" )\a"}
 fi
 
 function _short_function_name {
