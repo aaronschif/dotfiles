@@ -9,19 +9,21 @@ stdenv.mkDerivation {
   };
 
   buildInputs = [
-    git
+    git which
   ];
 
   installPhase = ''
     sed -i "s|homeshick=.*|homeshick=$prefix/lib/homeshick/|" bin/homeshick
+    sed -i "2i\export PATH=$PATH:\$PATH" bin/homeshick
     installBin bin/homeshick
-    ensureDir $prefix/lib/homeshick/
+
+    mkdir -p $prefix/lib/homeshick/
     cp -r lib/ $prefix/lib/homeshick/
 
-    ensureDir $prefix/share/bash-completion/completions/
+    mkdir -p $prefix/share/bash-completion/completions/
     cp completions/homeshick-completion.bash $prefix/share/bash-completion/completions/
 
-    ensureDir $prefix/share/zsh/vendor-completions/
+    mkdir -p $prefix/share/zsh/vendor-completions/
     cp completions/_homeshick $prefix/share/zsh/vendor-completions/
   '';
 
