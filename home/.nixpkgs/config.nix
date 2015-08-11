@@ -19,13 +19,20 @@ with import <nixpkgs> {};
               };
         });
         atom = let version = "1.0.5"; in
-        pkgs.stdenv.lib.overrideDerivation pkgs.duply (oldAttrs: {
+        pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
             name = "atom-${version}";
             version = "${version}";
 
+            phases = [oldAttrs.phases "postInstall"];
+
+            postInstall = ''
+              mkdir -p $prefix/share/icons/
+              mv $prefix/share/pixmaps/* $prefix/share/icons/
+            '';
+
             src = fetchurl {
                 url = "https://github.com/atom/atom/releases/download/v${version}/atom-amd64.deb";
-                sha256 = "434be52726fed9804ddb8c07dba200d774d145d0a870d2a013b5f95eb882fa7e";
+                sha256 = "0fq2ws75jq6k98rkc91fflkzbm8hhgi6xmkwgi5llb7kf1bvykbr";
                 name = "env-atom.deb";
             };
         });
