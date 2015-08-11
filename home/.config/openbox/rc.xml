@@ -348,6 +348,11 @@
         <command>x-terminal-emulator</command>
       </action>
     </keybind>
+    <keybind key="C-space">
+      <action name="Execute">
+        <command>j4-dmenu-desktop</command>
+      </action>
+    </keybind>
   </keyboard>
   <mouse>
     <dragThreshold>1</dragThreshold>
