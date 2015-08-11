@@ -2,7 +2,27 @@
 
 zcompile $HOME/.zshrc
 
+local x
 let "x=0"
+
+echo "Searching ~"
+function _$0_compile {
+    local file="$1"
+    if test -e "$file" -a ! -e "$file.zwc" -o "$file" -nt "$file.zwc"
+    then
+        echo "  Compiling $file"
+        let "x++"
+        zcompile $file
+    else
+        : #echo "  Already compiled $file"
+    fi
+}
+
+local file
+for file in ~/.zshrc ~/.zshenv ~/.zshprofile
+do
+    _$0_compile $file
+done
 
 for dir in $fpath
 do
@@ -11,14 +31,7 @@ do
         echo "Searching $dir"
         for file in $(find $dir/ -maxdepth 1 -type f -not -name '*.*')
         do
-            if test ! -e "$file.zwc" -o "$file" -nt "$file.zwc"
-            then
-                echo "  Compiling $file"
-                let "x++"
-                zcompile $file
-            else
-                : #echo "  Already compiled $file"
-            fi
+            _$0_compile $file
         done
     else
         : #echo "Skipping $dir"

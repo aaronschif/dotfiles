@@ -14,5 +14,11 @@
     invisibles: {}
     preferredLineLength: 100
     tabLength: 4
+    fontSize: 10
   "autocomplete-python":
     extraPaths: "$PROJECT/apps"
+  "tree-view":
+    hideIgnoredNames: true
+  linter: {}
+  tabs:
+    usePreviewTabs: true
