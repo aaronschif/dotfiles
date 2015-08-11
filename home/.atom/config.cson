@@ -1,15 +1,18 @@
 "*":
   "exception-reporting":
-    userId: "0e3054b6-2e1b-48e8-d05f-96e04d93b0ac"
+    userId: "d2ef4277-532a-4a55-4567-10b5bedebbfc"
   welcome:
     showOnStartup: false
   core:
     ignoredNames: [
+      "*~"
       "*.pyc"
+      "*.pyo"
       ".python-version"
     ]
   editor:
     invisibles: {}
+    preferredLineLength: 100
     tabLength: 4
-  "tree-view":
-    hideIgnoredNames: true
+  "autocomplete-python":
+    extraPaths: "$PROJECT/apps"
