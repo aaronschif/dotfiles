@@ -9,6 +9,6 @@ fi
 local git=
 if git=`$BIN -q`
 then
-    echo "%F{blue}GIT%F{green}$git"
+    echo " %F{blue}GIT%F{green}$git"
 fi
 # /home/aaron/Downloads/dgitprompt simple 2>> /tmp/dgitpromptlog || echo -n GITERROR

@@ -1,0 +1,15 @@
+"*":
+  "exception-reporting":
+    userId: "0e3054b6-2e1b-48e8-d05f-96e04d93b0ac"
+  welcome:
+    showOnStartup: false
+  core:
+    ignoredNames: [
+      "*.pyc"
+      ".python-version"
+    ]
+  editor:
+    invisibles: {}
+    tabLength: 4
+  "tree-view":
+    hideIgnoredNames: true

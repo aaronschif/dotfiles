@@ -10,10 +10,13 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-source ~/Build/antigen/antigen.zsh
-antigen bundle dgladkov/zsh-pip-completion
-antigen bundle zsh-users/zsh-completions src
-antigen apply
+if source antigen.zsh > /dev/null; then
+  antigen bundle dgladkov/zsh-pip-completion
+  antigen bundle zsh-users/zsh-completions src
+  antigen apply
+else
+  print -P '%F{yellow}Antigen could not be found.%F{reset}'
+fi
 
 autoload -U _ksu_vagrant _gitprompt
 precmd_functions+=_ksu_vagrant
@@ -60,7 +63,7 @@ fi
 
 function _short_function_name {
     case "$1" in
-        sudo) echo -n "#$2";;
+        sudo\ *) echo -n "#$2";;
         *) echo -n "$1";;
     esac
 }
@@ -77,20 +80,32 @@ function _pyvirt {
   fi
 }
 
+function _depth {
+  local number_raw=$(ps -o ucmd | grep -e '^zsh$' | wc -l)
+  let "number = $number_raw - 2"
+  if [ "$number" != "1" ]; then
+    echo " %F{blue}#%F{green}$number"
+  fi
+}
+
 export ANSIBLE_NOCOWS=true
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 # export WORKON_HOME=$HOME/.cache/virtualenvs
 # source /usr/local/bin/virtualenvwrapper.sh
 
-_pre_pyenv_path="$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-PATH="$_pre_pyenv_path"
+if which pyenv > /dev/null; then
+  _pre_pyenv_path="$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+  PATH="$_pre_pyenv_path"
+else
+  print -P '%F{yellow}Pyenv could not be found.%F{reset}'
+fi
 
 setopt prompt_subst
 PROMPT="%F{green}%n$host %F{green}%3~ %(20l,
 ,)%F{blue}%#%F{reset_color} "
-RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(_pyvirt)%(0?,, %F{blue}?%F{green}%?) \$(_gitprompt)"
+RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(_pyvirt)%(0?,, %F{blue}?%F{green}%?)\$(_gitprompt)\$(_depth)"
 
 export SUDO_PROMPT="$fg_bold[yellow][sudo password]$reset_color "
 which vimpager &> /dev/null && export PAGER=vimpager
