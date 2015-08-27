@@ -16,3 +16,7 @@
     tabLength: 4
   "autocomplete-python":
     extraPaths: "$PROJECT/apps"
+  "linter-pylama":
+    ignoreErrorsAndWarnings: "D100,D101,D102"
+  linter:
+    showErrorPanel: false
