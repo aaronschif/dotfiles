@@ -19,6 +19,9 @@
     extraPaths: "$PROJECT/apps"
   "tree-view":
     hideIgnoredNames: true
-  linter: {}
   tabs:
     usePreviewTabs: true
+  "linter-pylama":
+    ignoreErrorsAndWarnings: "D100,D101,D102"
+  linter:
+    showErrorPanel: false

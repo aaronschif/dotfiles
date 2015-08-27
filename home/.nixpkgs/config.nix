@@ -18,7 +18,7 @@ with import <nixpkgs> {};
                   sha256 = "1k7nadidpaz9fnr6jjbaq1jssisqy8xyd46743xngvpgsvfnna32";
               };
         });
-        atom = let version = "1.0.5"; in
+        atom = let version = "1.0.7"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
             name = "atom-${version}";
             version = "${version}";
@@ -32,8 +32,25 @@ with import <nixpkgs> {};
 
             src = fetchurl {
                 url = "https://github.com/atom/atom/releases/download/v${version}/atom-amd64.deb";
-                sha256 = "0fq2ws75jq6k98rkc91fflkzbm8hhgi6xmkwgi5llb7kf1bvykbr";
+                sha256 = "1nafpczps5mvhyrnx3vdgfx3sa41pg6pvfx9zxdvsprap2myhqj5";
                 name = "env-atom.deb";
+            };
+        });
+        tint2 = let version = "0.12.2"; in
+        pkgs.stdenv.lib.overrideDerivation pkgs.tint2 (oldAttrs: {
+            name = "tint2-${version}";
+            version = "${version}";
+            buildInputs = oldAttrs.buildInputs ++ [librsvg xlibs.libxshmfence gnome.startup_notification];
+
+            preConfigure = ''
+                PKG_CONFIG_PATH=${gnome.startup_notification}/lib/pkgconfig:${xlibs.libxshmfence}/lib/pkgconfig:${librsvg}/lib/pkgconfig:$PKG_CONFIG_PATH
+            '';
+
+            cmakeFlags = ["-DSYSCONFDIR=$out/etc"];
+
+            src = fetchurl {
+                url = "https://gitlab.com/o9000/tint2/repository/archive.tar.gz?ref=${version}";
+                sha256 = "1v20wqifsv78kmi5znllgyyks41dlmjvv2xw8b78jvfz7zjcinv5";
             };
         });
     };
