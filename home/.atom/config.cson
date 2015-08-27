@@ -21,7 +21,7 @@
     hideIgnoredNames: true
   tabs:
     usePreviewTabs: true
-  "linter-pylama":
-    ignoreErrorsAndWarnings: "D100,D101,D102"
   linter:
     showErrorPanel: false
+  "linter-pylama":
+    ignoreErrorsAndWarnings: "D100,D101,D102,D103,E501,D203,D400"
