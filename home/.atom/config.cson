@@ -14,9 +14,14 @@
     invisibles: {}
     preferredLineLength: 100
     tabLength: 4
+    fontSize: 10
   "autocomplete-python":
     extraPaths: "$PROJECT/apps"
-  "linter-pylama":
-    ignoreErrorsAndWarnings: "D100,D101,D102"
+  "tree-view":
+    hideIgnoredNames: true
+  tabs:
+    usePreviewTabs: true
   linter:
     showErrorPanel: false
+  "linter-pylama":
+    ignoreErrorsAndWarnings: "D100,D101,D102,D103,E501,D203,D400"
