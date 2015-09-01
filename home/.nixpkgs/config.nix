@@ -18,7 +18,7 @@ with import <nixpkgs> {};
                   sha256 = "1k7nadidpaz9fnr6jjbaq1jssisqy8xyd46743xngvpgsvfnna32";
               };
         });
-        atom = let version = "1.0.7"; in
+        atom = let version = "1.0.9"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
             name = "atom-${version}";
             version = "${version}";
@@ -48,9 +48,27 @@ with import <nixpkgs> {};
 
             cmakeFlags = ["-DSYSCONFDIR=$out/etc"];
 
+            postInstall = "rm $out/share/icons/hicolor/icon-theme.cache";
+
             src = fetchurl {
                 url = "https://gitlab.com/o9000/tint2/repository/archive.tar.gz?ref=${version}";
                 sha256 = "1v20wqifsv78kmi5znllgyyks41dlmjvv2xw8b78jvfz7zjcinv5";
+            };
+        });
+        dub = let version = "0.9.24-rc.3"; in
+        pkgs.stdenv.lib.overrideDerivation pkgs.dub (oldAttr: {
+            name = "dub-${version}";
+            src = fetchurl {
+                url = "https://github.com/D-Programming-Language/dub/archive/v${version}.tar.gz";
+                sha256 = "0nyv9vkwiik43kmarhlgfnxnpbxp0xc5y3igvihihcm2k4nym865";
+            };
+        });
+        openspades = let version = "0.0.12"; in
+        pkgs.stdenv.lib.overrideDerivation pkgs.openspades (oldAttr: {
+            name = "openspades-${version}";
+            src = fetchurl {
+                url = "https://github.com/yvt/openspades/archive/50abf954aabafb82e73c74413e0096f1f9610e03.tar.gz";
+                sha256 = "03l363va9miql9d0ywbzrl1iahfw36kmprqxp0dbp3w3lrgaig9v";
             };
         });
     };
