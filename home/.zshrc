@@ -11,7 +11,6 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 if source antigen.zsh > /dev/null; then
-  antigen bundle dgladkov/zsh-pip-completion
   antigen bundle zsh-users/zsh-completions src
   antigen apply
 else
@@ -37,7 +36,7 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' use-compctl true
 zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'

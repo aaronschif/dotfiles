@@ -9,3 +9,5 @@ then
 fi
 
 fpath=("$HOME/.nix-profile/share/zsh/vendor-completions/" $fpath)
+export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs:unstable=$HOME/Projects/nixpkgs
+

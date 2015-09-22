@@ -1,4 +1,4 @@
-# vim: fn=zsh
+# vim: set fn=zsh
 
 zcompile $HOME/.zshrc
 

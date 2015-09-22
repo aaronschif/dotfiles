@@ -14,7 +14,7 @@
     invisibles: {}
     preferredLineLength: 100
     tabLength: 4
-    fontSize: 10
+    fontSize: 11
   "autocomplete-python":
     extraPaths: "$PROJECT/apps"
   "tree-view":
@@ -25,3 +25,5 @@
     showErrorPanel: false
   "linter-pylama":
     ignoreErrorsAndWarnings: "D100,D101,D102,D103,E501,D203,D400"
+  "linter-flake8":
+    maxLineLength: 100
