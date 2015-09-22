@@ -1,7 +1,8 @@
 with import <nixpkgs> {};
 
-stdenv.mkDerivation {
-  name = "j4-dmenu-desktop-2.13";
+stdenv.mkDerivation rec {
+  name = "j4-dmenu-desktop-${version}";
+  version = "2.13";
 
   src = fetchurl {
     url = https://github.com/enkore/j4-dmenu-desktop/archive/r2.13.tar.gz;
@@ -19,8 +20,13 @@ stdenv.mkDerivation {
   '';
 
   meta = {
-    description = "pager using vim and less.vim";
-    homepage = https://github.com/rkitover/vimpager;
-    maintainers = [ "Rafael Kitover rkitover@gmail.com" ];
+    description = "A fast desktop menu";
+    longDescription = ''
+      j4-dmenu-desktop is a replacement for i3-dmenu-desktop. It's purpose is to find .desktop files
+      and offer you a menu to start an application using dmenu. Since r2.7 j4-dmenu-desktop doesn't
+      require i3wm anymore and should work just fine on about any desktop environment.
+    '';
+    homepage = https://github.com/enkore/j4-dmenu-desktop;
+    maintainers = [ stdenv.lib.maintainers.aaronschif ];
   };
 }
