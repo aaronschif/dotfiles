@@ -1,4 +1,4 @@
-
+# -*- grammar-ext: .zsh -*-
 : ${KSU_VAGRANT_PREFIX:=~/Projects/kstate}
 : ${KSU_VAGRANT_SOURCE:=~/Projects/kstate/python-vm}
 

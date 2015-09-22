@@ -1,3 +1,4 @@
+# -*- grammar-ext: .zsh -*-
 local BIN=/home/aaron/Projects/dgitprompt/dgitprompt
 
 if ! test -f "$BIN"

@@ -1,5 +1,6 @@
 #compdef pip pip2 pip-2.7 pip3 pip-3.2 pip-3.3 pip-3.4
 #autoload
+# -*- grammar-ext: .zsh -*-
 
 # Clone of https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/pip/pip.plugin.zsh
 
