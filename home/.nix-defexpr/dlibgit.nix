@@ -1,11 +1,11 @@
 with import <nixpkgs> {};
 
 stdenv.mkDerivation {
-  name = "dgitprompt-0.1.0";
+  name = "dgitprompt-0.2.0";
 
   src = fetchurl {
-    url = https://github.com/aaronschif/dgitprompt/archive/0.1.0.tar.gz;
-    sha256 = "1i8arzk85pmaqg1z5yxk5yw661kh0g0ghq67vy4vi1cfhwl3ag6d";
+    url = https://github.com/aaronschif/dgitprompt/archive/0.2.0.tar.gz;
+    sha256 = "0ydzmyk008fgvaj55cwa77hhr62n94x5dh6rg8al3kw8nk1zz1n8";
   };
 
   buildInputs = [ dmd dub libgit2 ];
@@ -17,10 +17,4 @@ stdenv.mkDerivation {
       PREFIX=$out
     )
   '';
-
-  meta = {
-    description = "pager using vim and less.vim";
-    homepage = https://github.com/rkitover/vimpager;
-    maintainers = [ "Rafael Kitover rkitover@gmail.com" ];
-  };
 }

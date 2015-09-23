@@ -55,12 +55,12 @@ with import <nixpkgs> {};
                 sha256 = "1v20wqifsv78kmi5znllgyyks41dlmjvv2xw8b78jvfz7zjcinv5";
             };
         });
-        dub = let version = "0.9.24-rc.3"; in
+        dub = let version = "0.9.24"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.dub (oldAttr: {
             name = "dub-${version}";
             src = fetchurl {
                 url = "https://github.com/D-Programming-Language/dub/archive/v${version}.tar.gz";
-                sha256 = "0nyv9vkwiik43kmarhlgfnxnpbxp0xc5y3igvihihcm2k4nym865";
+                sha256 = "0rpqvscm2vzw2vh9sq6pznvijqj2b10j7bc5yr5bfz6l0zsrzzl8";
             };
         });
         openspades = let version = "0.0.12"; in
