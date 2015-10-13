@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sudo openconnect vpn.net.k-state.edu --authgroup=OMEVPN --user=aaronschif
+openconnect=`which openconnect`
+sudo $openconnect vpn.net.k-state.edu --authgroup=OMEVPN --user=aaronschif

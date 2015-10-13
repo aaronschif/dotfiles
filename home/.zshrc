@@ -10,7 +10,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-if source antigen.zsh > /dev/null; then
+if source antigen.zsh 2> /dev/null; then
   antigen bundle zsh-users/zsh-completions src
   antigen apply
 else
