@@ -1,0 +1,7 @@
+#!/bin/bash
+
+realsudo=`which -a sudo | sed -n 2p`
+realcmd=`which $1`
+
+shift 1
+$realsudo $realcmd $@

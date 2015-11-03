@@ -11,6 +11,10 @@
       ".python-version"
       "__pycache__"
     ]
+    disabledPackages: [
+      "live-doc-viewer"
+      "language-python"
+    ]
   editor:
     invisibles: {}
     preferredLineLength: 100
@@ -29,3 +33,9 @@
   "linter-flake8":
     maxLineLength: 100
   "linter-clang": {}
+  "live-doc-viewer":
+    command1: {}
+    command2: {}
+    command3: {}
+    command4: {}
+    command5: {}

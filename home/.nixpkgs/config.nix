@@ -1,6 +1,8 @@
 with import <nixpkgs> {};
 
 {
+    allowUnfree = true;
+
     packageOverrides = pkgs: rec {
         duplicity = let version = "0.7.04"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.duplicity (oldAttrs: {
@@ -18,7 +20,7 @@ with import <nixpkgs> {};
                   sha256 = "1k7nadidpaz9fnr6jjbaq1jssisqy8xyd46743xngvpgsvfnna32";
               };
         });
-        atom = let version = "1.0.19"; in
+        atom = let version = "1.1.0"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
             name = "atom-${version}";
             version = "${version}";
@@ -32,7 +34,7 @@ with import <nixpkgs> {};
 
             src = fetchurl {
                 url = "https://github.com/atom/atom/releases/download/v${version}/atom-amd64.deb";
-                sha256 = "1kpwvjw720wns444qkcmmng4im6rziqi5k8cnl7aickcf1f4nlvp";
+                sha256 = "1rbwwwryhcasqgn2y1d9hvi3n4dag50dh1fd9hmkx4h9nmm3mbi0";
                 name = "env-atom.deb";
             };
         });
@@ -69,6 +71,18 @@ with import <nixpkgs> {};
             src = fetchurl {
                 url = "https://github.com/yvt/openspades/archive/50abf954aabafb82e73c74413e0096f1f9610e03.tar.gz";
                 sha256 = "03l363va9miql9d0ywbzrl1iahfw36kmprqxp0dbp3w3lrgaig9v";
+            };
+        });
+        smlnj =
+        pkgs.stdenv.lib.overrideDerivation pkgs.smlnj (oldAttrs: {
+            buildInputs = oldAttrs.buildInputs ++ [readline];
+        });
+        tilda =
+        pkgs.stdenv.lib.overrideDerivation pkgs.tilda (oldAttrs: {
+            name ="tilda-1.2.4";
+            src= fetchurl {
+                url = https://github.com/lanoxx/tilda/archive/tilda-1.2.4.tar.gz;
+                sha256 = "07kmf22jqwj275gd2zk5z8hg8dg9zhrwc7z4sa507nfgv32m4yqz";
             };
         });
     };
