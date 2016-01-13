@@ -97,6 +97,15 @@ with import <nixpkgs> {};
         pkgs.stdenv.lib.overrideDerivation pkgs.smlnj (oldAttrs: {
             buildInputs = oldAttrs.buildInputs ++ [readline];
         });
+        mymopidy =
+        pkgs.stdenv.lib.overrideDerivation pkgs.mopidy (oldAttrs: rec {
+            postInstall = ''
+                wrapProgram $out/bin/mopidy \
+                  --prefix GST_PLUGIN_SYSTEM_PATH : "${pkgs.gst_plugins_ugly}/lib/gstreamer-0.10:$GST_PLUGIN_SYSTEM_PATH"
+              '';
+            buildInputs = oldAttrs.buildInputs ++ [pkgs.gst_plugins_ugly pkgs.gst_plugins_bad];
+            propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [pkgs.mopidy-spotify];
+        });
         tilda =
         pkgs.stdenv.lib.overrideDerivation pkgs.tilda (oldAttrs: {
             name ="tilda-1.3.1";
@@ -106,5 +115,17 @@ with import <nixpkgs> {};
                 sha256 = "1nh0kw8f6srriglj55gmir1hvakcwrak1wcydz3vpnmwipgy6jib";
             };
         });
+        epiphany =
+        pkgs.stdenv.lib.overrideDerivation pkgs.epiphany (oldAttrs: rec {
+            name = "epiphany-3.19.1";
+            /*patches = [];*/
+            configureScript = "";
+            src = fetchurl {
+                url = "mirror://gnome/sources/epiphany/3.19/${name}.tar.xz";
+                sha256 = "18md30xfxh41sc5cxwxg2962mmb6xnd2nsy8whmacwa91ay1m11w";
+            };
+        });
+
+
     };
 }

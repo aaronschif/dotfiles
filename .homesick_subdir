@@ -2,3 +2,4 @@
 .local
 .nix-defexpr
 .atom
+.config/tilda

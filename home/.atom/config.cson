@@ -53,3 +53,5 @@
 ".python.source":
   editor:
     preferredLineLength: 100
+  "python-tools": {}
+  "open-in-browsers": {}
