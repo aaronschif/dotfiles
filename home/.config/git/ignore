@@ -1,4 +1,7 @@
+/.python-venv
 /.pyenv
 /.python-version
 /.idea
+/.tags
+/.tags1
 *~

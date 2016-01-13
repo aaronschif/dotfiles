@@ -7,8 +7,11 @@ with import <nixpkgs> {};
         clawsMail = pkgs.stdenv.lib.overrideDerivation (pkgs.clawsMail.override {
                 enablePluginFancy = true;
                 enableSpellcheck = true;
+                enablePluginRavatar = true;
+                enablePluginVcalendar = true;
             }) (oldAttrs: {
-                /*configureFlags = oldAttrs.configureFlags ++ [ "--enable-gtk3" ];
+                /*enableParallelBuilding = false;
+                configureFlags = oldAttrs.configureFlags ++ [ "--enable-gtk3" ];
                 nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ gnome3.gtk ];*/
         });
 
@@ -71,6 +74,15 @@ with import <nixpkgs> {};
             src = fetchurl {
                 url = "https://github.com/D-Programming-Language/dub/archive/v${version}.tar.gz";
                 sha256 = "0rpqvscm2vzw2vh9sq6pznvijqj2b10j7bc5yr5bfz6l0zsrzzl8";
+            };
+        });
+        dmd = let version = "2.069.2"; in
+        pkgs.stdenv.lib.overrideDerivation pkgs.dmd (oldAttrs: {
+            name = "dmd-${version}";
+            /*buildInputs = [ coreutils ] ++ oldAttrs.buildInputs;*/
+            src = fetchurl {
+                url = "http://downloads.dlang.org/releases/2015/dmd.${version}.zip";
+                sha256 = "1k3qh27wfg2x54jqvcv6f5rcnp0d5mjd6n4p1hmazxy9amap9bza";
             };
         });
         openspades = let version = "0.0.12"; in

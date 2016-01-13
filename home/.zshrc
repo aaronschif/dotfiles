@@ -62,7 +62,7 @@ fi
 
 function _short_function_name {
     case "$1" in
-        sudo\ *) echo -n "#$2";;
+        sudo\ *) echo -n "#${1#sudo}";;
         *) echo -n "$1";;
     esac
 }

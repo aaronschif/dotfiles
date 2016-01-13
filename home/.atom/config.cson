@@ -14,12 +14,18 @@
     disabledPackages: [
       "live-doc-viewer"
       "language-python"
+      "file-mode"
+      "autocomplete-clang"
+      "symbols-view"
+      "python-tools"
+      "hyperclick"
+      "linter-flake8"
     ]
   editor:
     invisibles: {}
     preferredLineLength: 100
     tabLength: 4
-    fontSize: 10
+    fontSize: 9
   "autocomplete-python":
     extraPaths: "$PROJECT/apps"
   "tree-view":
@@ -39,3 +45,11 @@
     command3: {}
     command4: {}
     command5: {}
+  "pdf-view": {}
+  "python-tools": {}
+".python.regexp.source":
+  editor:
+    preferredLineLength: 100
+".python.source":
+  editor:
+    preferredLineLength: 100
