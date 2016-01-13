@@ -1,4 +1,5 @@
 .config
 .local
-.nix-defexpr
+.nix-defexpr/mynix
 .atom
+.config/tilda
