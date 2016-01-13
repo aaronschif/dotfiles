@@ -4,6 +4,14 @@ with import <nixpkgs> {};
     allowUnfree = true;
 
     packageOverrides = pkgs: rec {
+        clawsMail = pkgs.stdenv.lib.overrideDerivation (pkgs.clawsMail.override {
+                enablePluginFancy = true;
+                enableSpellcheck = true;
+            }) (oldAttrs: {
+                /*configureFlags = oldAttrs.configureFlags ++ [ "--enable-gtk3" ];
+                nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ gnome3.gtk ];*/
+        });
+
         duplicity = let version = "0.7.04"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.duplicity (oldAttrs: {
               name = "duplicity-${version}";
@@ -20,7 +28,7 @@ with import <nixpkgs> {};
                   sha256 = "1k7nadidpaz9fnr6jjbaq1jssisqy8xyd46743xngvpgsvfnna32";
               };
         });
-        atom = let version = "1.1.0"; in
+        atom = let version = "1.3.2"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
             name = "atom-${version}";
             version = "${version}";
@@ -34,7 +42,7 @@ with import <nixpkgs> {};
 
             src = fetchurl {
                 url = "https://github.com/atom/atom/releases/download/v${version}/atom-amd64.deb";
-                sha256 = "1rbwwwryhcasqgn2y1d9hvi3n4dag50dh1fd9hmkx4h9nmm3mbi0";
+                sha256 = "1qkl94ydbin42y79rmv3931dxs08mrmk7i18a6adc4nxzr3ckdww";
                 name = "env-atom.deb";
             };
         });
@@ -87,11 +95,12 @@ with import <nixpkgs> {};
             propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [pkgs.mopidy-spotify];
         });
         tilda =
-        pkgs.stdenv.lib.overrideDerivation pkgs.tilda (oldAttrs: rec {
-            name = "tilda-1.2.4";
-            src = fetchurl {
-                url = "https://github.com/lanoxx/tilda/archive/tilda-1.2.4.tar.gz";
-                sha256 = "07kmf22jqwj275gd2zk5z8hg8dg9zhrwc7z4sa507nfgv32m4yqz";
+        pkgs.stdenv.lib.overrideDerivation pkgs.tilda (oldAttrs: {
+            name ="tilda-1.3.1";
+            configureFlags = "--disable-vte-2.91";
+            src= fetchurl {
+                url = https://github.com/lanoxx/tilda/archive/tilda-1.3.1.tar.gz;
+                sha256 = "1nh0kw8f6srriglj55gmir1hvakcwrak1wcydz3vpnmwipgy6jib";
             };
         });
         epiphany =
