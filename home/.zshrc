@@ -67,11 +67,6 @@ function _short_function_name {
     esac
 }
 
-if [ -n "$SSH_CONNECTION" ]
-then
-  host="@%M"
-fi
-
 function _pyvirt {
   if [ -n "$VIRTUAL_ENV" ]
   then
@@ -85,6 +80,26 @@ function _depth {
   if [ "$number" != "1" ]; then
     echo " %F{blue}#%F{green}$number"
   fi
+}
+
+function _user_host {
+    local output=""
+
+    if [ -n "$SSH_CONNECTION" ]
+    then
+        output="%F{blue}@%F{green}%M"
+    fi
+
+    case "$USER$output" in
+        aaron) ;;
+        *) output="%F{green}$USER$output" ;;
+    esac
+
+    if [ -n "$output" ]
+    then
+        output="$output "
+    fi
+    print -P "$output"
 }
 
 export ANSIBLE_NOCOWS=true
@@ -102,7 +117,7 @@ else
 fi
 
 setopt prompt_subst
-PROMPT="%F{green}%n$host %F{green}%3~ %(20l,
+PROMPT="$(_user_host)%F{green}%3~ %(20l,
 ,)%F{blue}%#%F{reset_color} "
 RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(_pyvirt)%(0?,, %F{blue}?%F{green}%?)\$(_gitprompt)$(_depth)"
 
