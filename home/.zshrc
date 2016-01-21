@@ -12,6 +12,7 @@ HISTFILE=~/.zsh_history
 
 if source antigen.zsh 2> /dev/null; then
   antigen bundle zsh-users/zsh-completions src
+  antigen bundle robbyrussell/oh-my-zsh plugins/taskwarrior
   antigen apply
 else
   print -P '%F{yellow}Antigen could not be found.%F{reset}'
