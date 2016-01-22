@@ -8,7 +8,6 @@
       "file-mode"
       "autocomplete-clang"
       "symbols-view"
-      "python-tools"
       "hyperclick"
       "linter-flake8"
     ]
@@ -47,6 +46,9 @@
     hideIgnoredNames: true
   welcome:
     showOnStartup: false
+".nix.source":
+  editor:
+    preferredLineLength: 100
 ".python.regexp.source":
   editor:
     preferredLineLength: 100
