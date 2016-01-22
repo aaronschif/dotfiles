@@ -31,7 +31,7 @@ with import <nixpkgs> {};
                   sha256 = "1k7nadidpaz9fnr6jjbaq1jssisqy8xyd46743xngvpgsvfnna32";
               };
         });
-        atom = let version = "1.3.2"; in
+        atom = let version = "1.4.0"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
             name = "atom-${version}";
             version = "${version}";
@@ -45,7 +45,7 @@ with import <nixpkgs> {};
 
             src = fetchurl {
                 url = "https://github.com/atom/atom/releases/download/v${version}/atom-amd64.deb";
-                sha256 = "1qkl94ydbin42y79rmv3931dxs08mrmk7i18a6adc4nxzr3ckdww";
+                sha256 = "0dipww58p0sm99jn1ariisha9wsnhl7rnd8achpxqkf4b3vwi5iz";
                 name = "env-atom.deb";
             };
         });

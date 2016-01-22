@@ -27,6 +27,6 @@ stdenv.mkDerivation rec {
       require i3wm anymore and should work just fine on about any desktop environment.
     '';
     homepage = https://github.com/enkore/j4-dmenu-desktop;
-    maintainers = [ stdenv.lib.maintainers.aaronschif ];
+    /*maintainers = [ stdenv.lib.maintainers.aaronschif ];*/
   };
 }

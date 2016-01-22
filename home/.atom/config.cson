@@ -1,9 +1,16 @@
 "*":
-  "exception-reporting":
-    userId: "d2ef4277-532a-4a55-4567-10b5bedebbfc"
-  welcome:
-    showOnStartup: false
+  "autocomplete-python":
+    extraPaths: "$PROJECT/apps"
   core:
+    disabledPackages: [
+      "live-doc-viewer"
+      "language-python"
+      "file-mode"
+      "autocomplete-clang"
+      "symbols-view"
+      "hyperclick"
+      "linter-flake8"
+    ]
     ignoredNames: [
       "*~"
       "*.pyc"
@@ -11,34 +18,20 @@
       ".python-version"
       "__pycache__"
     ]
-    disabledPackages: [
-      "live-doc-viewer"
-      "language-python"
-      "file-mode"
-      "autocomplete-clang"
-      "symbols-view"
-      "python-tools"
-      "hyperclick"
-      "linter-flake8"
-    ]
   editor:
+    fontSize: 12
     invisibles: {}
     preferredLineLength: 100
     tabLength: 4
-    fontSize: 9
-  "autocomplete-python":
-    extraPaths: "$PROJECT/apps"
-  "tree-view":
-    hideIgnoredNames: true
-  tabs:
-    usePreviewTabs: true
+  "exception-reporting":
+    userId: "d2ef4277-532a-4a55-4567-10b5bedebbfc"
   linter:
     showErrorPanel: false
-  "linter-pylama":
-    ignoreErrorsAndWarnings: "D100,D101,D102,D103,E501,D203,D400"
+  "linter-clang": {}
   "linter-flake8":
     maxLineLength: 100
-  "linter-clang": {}
+  "linter-pylama":
+    ignoreErrorsAndWarnings: "D100,D101,D102,D103,E501,D203,D400"
   "live-doc-viewer":
     command1: {}
     command2: {}
@@ -47,11 +40,24 @@
     command5: {}
   "pdf-view": {}
   "python-tools": {}
+  tabs:
+    usePreviewTabs: true
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
+".nix.source":
+  editor:
+    preferredLineLength: 100
 ".python.regexp.source":
   editor:
     preferredLineLength: 100
 ".python.source":
   editor:
     preferredLineLength: 100
-  "python-tools": {}
-  "open-in-browsers": {}
+  tabs:
+    usePreviewTabs: true
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
