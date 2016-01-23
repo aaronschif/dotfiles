@@ -1,0 +1,7 @@
+#! /bin/bash
+find /nix/store -maxdepth 1 -perm /222 \
+    | grep - \
+    | grep -v .lock \
+    | grep -v .tmp \
+    | grep -v nix- \
+    | xargs nix-store --repair-path
