@@ -31,7 +31,7 @@ with import <nixpkgs> {};
                   sha256 = "1k7nadidpaz9fnr6jjbaq1jssisqy8xyd46743xngvpgsvfnna32";
               };
         });
-        atom = let version = "1.4.0"; in
+        atom = let version = "1.5.0"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
             name = "atom-${version}";
             version = "${version}";
@@ -45,7 +45,7 @@ with import <nixpkgs> {};
 
             src = fetchurl {
                 url = "https://github.com/atom/atom/releases/download/v${version}/atom-amd64.deb";
-                sha256 = "0dipww58p0sm99jn1ariisha9wsnhl7rnd8achpxqkf4b3vwi5iz";
+                sha256 = "0x4a1lzxn9incbmrn3bwcp51m5hh17lw33s0br90nlnidc7dnf13";
                 name = "env-atom.deb";
             };
         });
@@ -68,18 +68,10 @@ with import <nixpkgs> {};
                 sha256 = "1v20wqifsv78kmi5znllgyyks41dlmjvv2xw8b78jvfz7zjcinv5";
             };
         });
-        dub = let version = "0.9.24"; in
-        pkgs.stdenv.lib.overrideDerivation pkgs.dub (oldAttr: {
-            name = "dub-${version}";
-            src = fetchurl {
-                url = "https://github.com/D-Programming-Language/dub/archive/v${version}.tar.gz";
-                sha256 = "0rpqvscm2vzw2vh9sq6pznvijqj2b10j7bc5yr5bfz6l0zsrzzl8";
-            };
-        });
         dmd = let version = "2.069.2"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.dmd (oldAttrs: {
             name = "dmd-${version}";
-            /*buildInputs = [ coreutils ] ++ oldAttrs.buildInputs;*/
+            buildInputs = [ which oldAttrs ] ++ oldAttrs.buildInputs;
             src = fetchurl {
                 url = "http://downloads.dlang.org/releases/2015/dmd.${version}.zip";
                 sha256 = "1k3qh27wfg2x54jqvcv6f5rcnp0d5mjd6n4p1hmazxy9amap9bza";
