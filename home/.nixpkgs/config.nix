@@ -14,7 +14,11 @@ with import <nixpkgs> {};
                 configureFlags = oldAttrs.configureFlags ++ [ "--enable-gtk3" ];
                 nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ gnome3.gtk ];*/
         });
-
+        evolution = pkgs.stdenv.lib.overrideDerivation (pkgs.gnome3.evolution ) (oldAttrs: {
+            preFixup = oldAttrs.preFixup + ''
+                wrapProgram $out/bin/.evolution-wrapped --prefix GIO_EXTRA_MODULES : "${gnome3.dconf}/lib/gio/modules:${gnome3.glib_networking}/lib/gio/modules"
+            '';
+        });
         duplicity = let version = "0.7.04"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.duplicity (oldAttrs: {
               name = "duplicity-${version}";
