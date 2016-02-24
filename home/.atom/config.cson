@@ -8,8 +8,8 @@
       "file-mode"
       "autocomplete-clang"
       "symbols-view"
-      "hyperclick"
       "linter-flake8"
+      "atom-jade"
     ]
     ignoredNames: [
       "*~"
@@ -40,12 +40,16 @@
     command5: {}
   "pdf-view": {}
   "python-tools": {}
+  "spell-check": {}
   tabs:
     usePreviewTabs: true
   "tree-view":
     hideIgnoredNames: true
   welcome:
     showOnStartup: false
+".jade.source":
+  editor:
+    preferredLineLength: 100
 ".nix.source":
   editor:
     preferredLineLength: 100

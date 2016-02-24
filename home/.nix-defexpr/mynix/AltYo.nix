@@ -1,20 +1,28 @@
 with import <nixpkgs> {};
 
 stdenv.mkDerivation {
-  name = "AltYo-0.4_rc16";
+  name = "AltYo-0.4_rc17";
 
   src = fetchurl {
-    url = https://github.com/linvinus/AltYo/archive/debian/0.4_rc16-linvinus1.tar.gz;
-    sha256 = "0b0jyr6byycc1m0samrialq4jmc8klxljhnaaz0qa9jf39s4km17";
+    url = https://github.com/linvinus/AltYo/archive/debian/0.4_rc17-linvinus1.tar.gz;
+    sha256 = "1l82nqz9sfxm3phs91j9a6d983w6k4l5yjmc64sh2bc5y2aaiarx";
   };
 
-  buildInputs = [ pkgconfig glib vala gnome3.gtk gnome3.vte gettext ];
+  buildInputs = [ pkgconfig glib vala gnome3.gtk gnome3.vte gettext makeWrapper ];
   # xmllint which
 
   configurePhase = ''
     makeFlagsArray=(
       PREFIX=$out
     )
+  '';
+
+  preFixup = ''
+    for f in "$out"/bin/*; do
+      wrapProgram $f \
+        --prefix XDG_DATA_DIRS : "$XDG_ICON_DIRS:$GSETTINGS_SCHEMAS_PATH" \
+        --prefix GIO_EXTRA_MODULES : "${gnome3.dconf}/lib/gio/modules"
+    done
   '';
 
   meta = {

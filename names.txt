@@ -1,0 +1,15 @@
+sg Daedalus
+sg Prometheus
+sg O'Neill
+bg Galactica
+ff Serenity
+mx Nebuchadnezzar
+sw Millenium Falcon
+st Enterprise
+st Voyager
+dm Raza
+dm Maruder
+kj Lucy
+xp Canterbury
+xp Donnager
+xp Rocinante
