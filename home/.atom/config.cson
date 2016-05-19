@@ -1,5 +1,6 @@
 "*":
   "atom-ctags": {}
+  "autocomplete-dcd": {}
   "autocomplete-python":
     extraPaths: "$PROJECT/apps"
   core:
@@ -12,6 +13,7 @@
       "linter-flake8"
       "atom-jade"
       "rst-preview"
+      "vim-mode"
     ]
     ignoredNames: [
       "*~"
@@ -21,7 +23,7 @@
       "__pycache__"
     ]
   editor:
-    fontSize: 10
+    fontSize: 13
     invisibles: {}
     preferredLineLength: 100
     tabLength: 4
@@ -30,6 +32,8 @@
   linter:
     showErrorPanel: false
   "linter-clang": {}
+  "linter-dscanner":
+    dscannerPath: "/home/aaron/.dub/packages/dscanner-0.3.0/dscanner"
   "linter-flake8":
     maxLineLength: 100
   "linter-pylama":
@@ -52,6 +56,9 @@
     usePreviewTabs: true
   "tree-view":
     hideIgnoredNames: true
+  "vim-mode":
+    startInInsertMode: true
+    wrapLeftRightMotion: true
   welcome:
     showOnStartup: false
 ".hyperlink.text":
