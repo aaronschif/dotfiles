@@ -4,4 +4,4 @@ realsudo=`which -a sudo | sed -n 2p`
 realcmd=`which $1 || echo $1`
 
 shift 1
-$realsudo $realcmd $@
+$realsudo $realcmd "$@"
