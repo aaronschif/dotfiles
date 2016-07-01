@@ -11,9 +11,11 @@
       "autocomplete-clang"
       "symbols-view"
       "linter-flake8"
-      "atom-jade"
       "rst-preview"
       "vim-mode"
+      "file-type-icons"
+      "atom-jade"
+      "linter-pyflakes"
     ]
     ignoredNames: [
       "*~"
@@ -67,12 +69,17 @@
 ".jade.source":
   editor:
     preferredLineLength: 100
+    tabLength: 4
 ".lisp.source":
   editor:
     preferredLineLength: 100
 ".nix.source":
   editor:
     preferredLineLength: 100
+".pyjade.source":
+  editor:
+    preferredLineLength: 100
+    tabLength: 4
 ".python.regexp.source":
   editor:
     preferredLineLength: 100

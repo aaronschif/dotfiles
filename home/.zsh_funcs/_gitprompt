@@ -8,7 +8,7 @@ then
 fi
 
 local git=
-if git=`$BIN -q`
+if git=`$BIN -q -t .3`
 then
     echo " %F{blue}GIT%F{green}$git"
 fi

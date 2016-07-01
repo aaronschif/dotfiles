@@ -12,8 +12,9 @@ stdenv.mkDerivation rec {
   phases = ["unpackPhase" "installPhase" "fixupPhase"];
 
   installPhase = ''
+    mkdir -p $out/bin
     chmod +x asciiquarium
-    installBin asciiquarium
+    mv asciiquarium $out/bin/
     wrapProgram $out/bin/asciiquarium --set PERL5LIB $PERL5LIB
   '';
 

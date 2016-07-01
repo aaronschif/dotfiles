@@ -1,7 +1,15 @@
 #! /bin/bash
-find /nix/store -maxdepth 1 -perm /222 \
+paths=$(
+find /nix/store -maxdepth 2 -perm /222 \
     | grep - \
     | grep -v .lock \
     | grep -v .tmp \
     | grep -v nix- \
-    | xargs nix-store --repair-path
+    # | xargs nix-store --repair-path
+)
+
+for path in $paths
+do
+    echo CLEANING $path
+    nix-store --repair-path $path || true
+done
