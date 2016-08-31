@@ -8,6 +8,8 @@ then
     . ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
-fpath=("$HOME/.nix-profile/share/zsh/vendor-completions/" $fpath)
+fpath=(
+    "$HOME/.nix-profile/share/zsh/vendor-completions/"
+    "/usr/share/zsh/vendor-completions/"
+    $fpath)
 export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs:unstable=$HOME/Projects/nixpkgs
-

@@ -71,7 +71,7 @@ function _short_function_name {
 function _pyvirt {
   if [ -n "$VIRTUAL_ENV" ]
   then
-    echo " %F{blue}PY%F{green}`basename $VIRTUAL_ENV`"
+    echo " %F{blue}PY%F{green}$(basename $(dirname $VIRTUAL_ENV))"
   fi
 }
 
@@ -108,13 +108,18 @@ export VIRTUAL_ENV_DISABLE_PROMPT=true
 # export WORKON_HOME=$HOME/.cache/virtualenvs
 # source /usr/local/bin/virtualenvwrapper.sh
 
-if which pyenv > /dev/null; then
-  _pre_pyenv_path="$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-  PATH="$_pre_pyenv_path"
-else
-  print -P '%F{yellow}Pyenv could not be found.%F{reset}'
+# if which pyenv > /dev/null; then
+#   # _pre_pyenv_path="$PATH"
+#   # eval "$(pyenv init -)"
+#   # eval "$(pyenv virtualenv-init -)"
+#   # PATH="$_pre_pyenv_path"
+# else
+#   print -P '%F{yellow}Pyenv could not be found.%F{reset}'
+# fi
+
+if [ ! -z "$VTE_VERSION" ]
+then
+    . /etc/profile.d/vte-*.sh
 fi
 
 setopt prompt_subst

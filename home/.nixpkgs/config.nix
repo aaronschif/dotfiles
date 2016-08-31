@@ -1,5 +1,8 @@
-with import <nixpkgs> {};
-
+let
+    unstable = import <unstable> {};
+    nixpkgs = import <nixpkgs> {};
+in
+with nixpkgs;
 {
     allowUnfree = true;
 
@@ -35,15 +38,6 @@ with import <nixpkgs> {};
                   sha256 = "1k7nadidpaz9fnr6jjbaq1jssisqy8xyd46743xngvpgsvfnna32";
               };
         });
-        /*atom = let version = "1.5.3"; in
-        pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
-            phases = [oldAttrs.phases "postInstall"];
-
-            postInstall = ''
-              mkdir -p $prefix/share/icons/
-              mv $prefix/share/pixmaps/* $prefix/share/icons/
-            '';
-        });*/
         tint2 = let version = "0.12.2"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.tint2 (oldAttrs: {
             name = "tint2-${version}";
