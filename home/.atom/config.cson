@@ -12,6 +12,7 @@
       "linter-flake8"
       "atom-jade"
       "rst-preview"
+      "tidy-markdown"
     ]
     ignoredNames: [
       "*~"
@@ -24,6 +25,7 @@
     fontSize: 10
     invisibles: {}
     preferredLineLength: 100
+    showInvisibles: true
     tabLength: 4
   "exception-reporting":
     userId: "d2ef4277-532a-4a55-4567-10b5bedebbfc"

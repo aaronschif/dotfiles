@@ -1,11 +1,11 @@
 with import <nixpkgs> {};
 
 stdenv.mkDerivation {
-  name = "AltYo-0.4_rc17";
+  name = "altyo-0.4_rc19";
 
   src = fetchurl {
-    url = https://github.com/linvinus/AltYo/archive/debian/0.4_rc17-linvinus1.tar.gz;
-    sha256 = "1l82nqz9sfxm3phs91j9a6d983w6k4l5yjmc64sh2bc5y2aaiarx";
+    url = https://github.com/linvinus/AltYo/archive/debian/0.4_rc19-linvinus1.tar.gz;
+    sha256 = "15xgd0fzjwj25bx3gqgzixgn00ng48klggcw4ypph0sss99mmkp0";
   };
 
   buildInputs = [ pkgconfig glib vala gnome3.gtk gnome3.vte gettext makeWrapper ];
