@@ -28,24 +28,6 @@ with nixpkgs;
                   sha256 = "1k7nadidpaz9fnr6jjbaq1jssisqy8xyd46743xngvpgsvfnna32";
               };
         });
-        /*atom = with unstable; let version = "1.7.2"; in
-        pkgs.stdenv.lib.overrideDerivation pkgs.atom (oldAttrs: {
-            name = "atom-${version}";
-            version = "${version}";
-
-            phases = [oldAttrs.phases "postInstall"];
-
-            postInstall = ''
-              mkdir -p $prefix/share/icons/
-              mv $prefix/share/pixmaps/* $prefix/share/icons/
-            '';
-
-            src = fetchurl {
-                url = "https://github.com/atom/atom/releases/download/v${version}/atom-amd64.deb";
-                sha256 = "1x0q1zabjgn9hf8jji6bk5f77jnbrlzw3b524jgq44790fiwv0q3";
-                name = "env-atom.deb";
-            };
-        });*/
         tint2 = let version = "0.12.2"; in
         pkgs.stdenv.lib.overrideDerivation pkgs.tint2 (oldAttrs: {
             name = "tint2-${version}";
