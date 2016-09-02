@@ -13,7 +13,8 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     chmod +x weatherspect
-    installBin weatherspect
+    mkdir -p $out/bin/
+    mv weatherspect $out/bin/
 
     wrapProgram $out/bin/weatherspect --set PERL5LIB $PERL5LIB
   '';

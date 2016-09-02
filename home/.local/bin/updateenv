@@ -1,0 +1,14 @@
+eval "$(
+    local cwd="$(realpath $(pwd))/."
+    while [ ! "$cwd" = "/" ]
+    do
+        cwd=$(dirname "$cwd")
+        echo "$cwd"
+    done | sort -u | while read cwd
+    do
+        [ -r "$cwd/.updateenv" ] && (
+            echo "Read $cwd" >&2
+            echo "source $cwd/.updateenv"
+        )
+    done
+)"

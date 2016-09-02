@@ -1,11 +1,11 @@
 with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
-  name = "ckb-0.2.5";
+  name = "ckb-0.2.6";
 
   src = fetchurl {
-    url = https://github.com/ccMSC/ckb/archive/v0.2.5.tar.gz;
-    sha256 = "15hr4hbxiwrp3s56bx5p073blk1nvsw2ikgmrg0iwkd1rvpzlgv3";
+    url = https://github.com/ccMSC/ckb/archive/v0.2.6.tar.gz;
+    sha256 = "149dcx3vvwgjfz9bjfqk2amg0pfbn02rm1c60rpsvxwlvnvj4jwj";
   };
 
   buildInputs = [
@@ -20,9 +20,11 @@ stdenv.mkDerivation rec {
 
   buildPhase = ''
     export QMAKE=${qt5.full}/bin/qmake
-    export PREFIX=$out
-    yes n | ./quickinstall
-  '';
+    export PREFIX=$out/bin/
+    sed 's/sudo//g' -i quickinstall
+    sed 's/read -rp/ echo n | read -rp/g' -i quickinstall
+    ./quickinstall
+    '';
 
   installPhase = ''
   '';

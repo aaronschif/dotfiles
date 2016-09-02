@@ -1,0 +1,4 @@
+#!/bin/bash -ex
+
+exec 2>&1
+tilda --hidden

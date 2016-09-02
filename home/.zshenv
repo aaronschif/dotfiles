@@ -11,6 +11,7 @@ fi
 
 fpath=(
     "$HOME/.nix-profile/share/zsh/vendor-completions/"
+    "$HOME/.nix-profile/share/zsh/site-functions/"
     "/usr/share/zsh/vendor-completions/"
     $fpath)
 export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs:unstable=$HOME/Projects/nixpkgs

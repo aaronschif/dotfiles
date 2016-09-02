@@ -7,16 +7,6 @@ with nixpkgs;
     allowUnfree = true;
 
     packageOverrides = pkgs: rec {
-        clawsMail = pkgs.stdenv.lib.overrideDerivation (pkgs.clawsMail.override {
-                enablePluginFancy = true;
-                enableSpellcheck = true;
-                enablePluginRavatar = true;
-                enablePluginVcalendar = true;
-            }) (oldAttrs: {
-                /*enableParallelBuilding = false;
-                configureFlags = oldAttrs.configureFlags ++ [ "--enable-gtk3" ];
-                nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ gnome3.gtk ];*/
-        });
         evolution = pkgs.stdenv.lib.overrideDerivation (pkgs.gnome3.evolution ) (oldAttrs: {
             preFixup = oldAttrs.preFixup + ''
                 wrapProgram $out/bin/.evolution-wrapped --prefix GIO_EXTRA_MODULES : "${gnome3.dconf}/lib/gio/modules:${gnome3.glib_networking}/lib/gio/modules"
@@ -107,11 +97,11 @@ with nixpkgs;
         });
         tilda =
         pkgs.stdenv.lib.overrideDerivation pkgs.tilda (oldAttrs: {
-            name ="tilda-1.3.1";
+            name ="tilda-1.3.3";
             configureFlags = "--disable-vte-2.91";
             src= fetchurl {
-                url = https://github.com/lanoxx/tilda/archive/tilda-1.3.1.tar.gz;
-                sha256 = "1nh0kw8f6srriglj55gmir1hvakcwrak1wcydz3vpnmwipgy6jib";
+                url = https://github.com/lanoxx/tilda/archive/tilda-1.3.3.tar.gz;
+                sha256 = "1cc4qbg1m3i04lj5p6i6xbd0zvy1320pxdgmjhz5p3j95ibsbfki";
             };
         });
         epiphany =

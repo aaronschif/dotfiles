@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=S6 Window
+Exec=s6-svscan /home/aaron/.services/window
+#TryExec=s6-svscan
+#StartupNotify=true
+Terminal=True
+Categories=Utility;
+#Hidden=True
+X-GNOME-Autostart-enabled=true

@@ -1,0 +1,4 @@
+#!/bin/dash
+
+echo "$PATH" | sed 's/:/\n/g' | xargs -I 0 find 0 -executable | xargs -n 1 basename | sort | uniq \
+  | while read cmd; do [ ${#cmd} -eq 2 ] && echo $cmd; done
