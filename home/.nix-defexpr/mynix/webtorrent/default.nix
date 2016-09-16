@@ -32,7 +32,9 @@ in rec {
 
 with import <nixpkgs> {};
 
-with lib;
+pkgs.atom
+
+/*with lib;
 
 let
   np = nodePackages.override { generated = ./package.nix; self = np; };
@@ -43,7 +45,7 @@ in nodePackages.buildNodePackage {
 
   preConfigure = ''
     set -x
-    sed "s/.*appdmg.*//" -i package.json
+    sed "s%.*appdmg.*%%" -i package.json
   '';
 
   src = fetchFromGitHub {
@@ -54,4 +56,4 @@ in nodePackages.buildNodePackage {
   };
 
   deps = (filter (v: nixType v == "derivation") (attrValues (np // {"appdmg" = false;})));
-}
+}*/
