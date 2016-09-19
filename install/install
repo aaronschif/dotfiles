@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+HERE=$(dirname "$0")
+
+service() {
+    mkdir -p "/usr/lib/systemd/system/"
+    cp "$HERE/files/zerotier.service" "/usr/lib/systemd/system/"
+    systemctl enable zerotier
+}
+
+service

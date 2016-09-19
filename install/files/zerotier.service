@@ -1,0 +1,8 @@
+[Unit]
+Description=zerotier
+
+[Service]
+ExecStart=/home/aaron/.nix-profile/bin/zerotier-one
+
+[Install]
+WantedBy=multi-user.target
