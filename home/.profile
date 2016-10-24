@@ -17,4 +17,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 if [ -e /home/aaron/.nix-profile/etc/profile.d/nix.sh ]; then . /home/aaron/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
 export XDG_DATA_DIRS=$HOME/.nix-profile/share/:/var/lib/snapd/desktop/:/usr/share/ubuntu/:/usr/share/gnome/:/usr/local/share/:/usr/share/
+
+export PATH="$HOME/.cargo/bin:$PATH"
