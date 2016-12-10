@@ -1,5 +1,5 @@
 # -*- grammar-ext: .zsh -*-
-local BIN=/home/aaron/Projects/dgitprompt/dgitprompt
+local BIN=/home/aaron/Projects/gitprompt/target/debug/gitprompt
 
 if ! test -f "$BIN"
 then
@@ -8,8 +8,8 @@ then
 fi
 
 local git=
-if git=`$BIN -q -t .3`
+if git=`$BIN -q -t 300`
 then
-    echo " %F{blue}GIT%F{green}$git"
+    echo "%F{blue}GIT%F{green}$git "
 fi
 # /home/aaron/Downloads/dgitprompt simple 2>> /tmp/dgitpromptlog || echo -n GITERROR

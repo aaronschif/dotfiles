@@ -71,7 +71,7 @@ function _short_function_name {
 function _pyvirt {
   if [ -n "$VIRTUAL_ENV" ]
   then
-    echo " %F{blue}PY%F{green}$(basename $(dirname $VIRTUAL_ENV))"
+    echo "%F{blue}PY%F{green}$(basename $(dirname $VIRTUAL_ENV)) "
   fi
 }
 
@@ -79,7 +79,7 @@ function _depth {
   local number_raw=$(ps -o ucmd | grep -e '^zsh$' | wc -l)
   let "number = $number_raw - 2"
   if [ "$number" != "1" ]; then
-    echo " %F{blue}#%F{green}$number"
+    echo "%F{blue}#%F{green}$number "
   fi
 }
 
@@ -105,17 +105,6 @@ function _user_host {
 
 export ANSIBLE_NOCOWS=true
 export VIRTUAL_ENV_DISABLE_PROMPT=true
-# export WORKON_HOME=$HOME/.cache/virtualenvs
-# source /usr/local/bin/virtualenvwrapper.sh
-
-# if which pyenv > /dev/null; then
-#   # _pre_pyenv_path="$PATH"
-#   # eval "$(pyenv init -)"
-#   # eval "$(pyenv virtualenv-init -)"
-#   # PATH="$_pre_pyenv_path"
-# else
-#   print -P '%F{yellow}Pyenv could not be found.%F{reset}'
-# fi
 
 if [ ! -z "$VTE_VERSION" ]
 then
@@ -123,9 +112,9 @@ then
 fi
 
 setopt prompt_subst
-PROMPT="$(_user_host)%F{green}%3~ %(20l,
+PROMPT="%(1j,%F{blue}JOBS%F{green}%j ,)\$(_pyvirt)%(0?,,%F{blue}?%F{green}%? )\$(_gitprompt)$(_depth)%(20l,
+,)$(_user_host)%F{green}%3~ %(30l,
 ,)%F{blue}%#%F{reset_color} "
-RPROMPT="%(1j, %F{blue}JOBS%F{green}%j,)\$(_pyvirt)%(0?,, %F{blue}?%F{green}%?)\$(_gitprompt)$(_depth)"
 
 export SUDO_PROMPT="$fg_bold[yellow][sudo password]$reset_color "
 which vimpager &> /dev/null && export PAGER=vimpager
