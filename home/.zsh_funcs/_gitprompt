@@ -1,5 +1,5 @@
 # -*- grammar-ext: .zsh -*-
-local BIN=/home/aaron/Projects/gitprompt/target/debug/gitprompt
+local BIN=/home/aaron/Projects/gitprompt/target/release/gitprompt
 
 if ! test -f "$BIN"
 then

@@ -18,8 +18,7 @@ else
   print -P '%F{yellow}Antigen could not be found.%F{reset}'
 fi
 
-autoload -U _ksu_vagrant _gitprompt
-precmd_functions+=_ksu_vagrant
+autoload -U _gitprompt
 
 autoload -Uz compinit
 compinit

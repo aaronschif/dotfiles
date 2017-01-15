@@ -1,6 +1,3 @@
-export PATH="$HOME/.local/lbin/:$HOME/.local/bin/:$PATH"
-
-
 fpath=("$HOME/.zsh_funcs" $fpath)
 autoload -U zcompile_all
 
