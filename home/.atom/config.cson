@@ -1,5 +1,6 @@
 "*":
   "atom-ctags": {}
+  "atom-typescript": {}
   "autocomplete-dcd": {}
   "autocomplete-python":
     extraPaths: "$PROJECT/apps"
@@ -10,13 +11,13 @@
       "file-mode"
       "autocomplete-clang"
       "symbols-view"
-      "linter-flake8"
       "rst-preview"
       "tidy-markdown"
       "vim-mode"
       "file-type-icons"
       "atom-jade"
       "linter-pyflakes"
+      "vim-mode-plus"
     ]
     ignoredNames: [
       "*~"
@@ -25,23 +26,26 @@
       ".python-version"
       "__pycache__"
     ]
+    telemetryConsent: "limited"
   editor:
-    fontSize: 13
+    fontFamily: "Hack, monospace, NovaMono"
     invisibles: {}
     preferredLineLength: 100
     showInvisibles: true
     tabLength: 4
   "exception-reporting":
     userId: "d2ef4277-532a-4a55-4567-10b5bedebbfc"
-  linter:
-    showErrorPanel: false
+  linter: {}
   "linter-clang": {}
   "linter-dscanner":
     dscannerPath: "/home/aaron/.dub/packages/dscanner-0.3.0/dscanner"
   "linter-flake8":
-    maxLineLength: 100
+    maxLineLength: 120
   "linter-pylama":
     ignoreErrorsAndWarnings: "D100,D101,D102,D103,E501,D203,D400"
+  "linter-ui-default":
+    panelHeight: 69
+    showPanel: true
   "live-doc-viewer":
     command1: {}
     command2: {}
@@ -52,6 +56,9 @@
   minimap: {}
   "pdf-view": {}
   "python-tools": {}
+  racer:
+    racerBinPath: "/home/aaron/.cargo/bin/racer"
+    rustSrcPath: "/home/aaron/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
   "rst-preview": {}
   "rst-preview-pandoc":
     pandocOpts: "-frst -thtml --webtex"

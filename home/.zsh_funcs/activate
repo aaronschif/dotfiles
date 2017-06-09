@@ -1,0 +1,6 @@
+# python
+export PATH="$PWD/venv/bin/:$PATH"
+# node
+export PATH="$PWD/node_modules/.bin/:$PATH"
+
+rehash

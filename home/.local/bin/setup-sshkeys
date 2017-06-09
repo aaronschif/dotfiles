@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find ~/.ssh/ -name '*' -exec test -r '{}.pub' \; -print -exec ssh-add '{}' \; < /dev/null

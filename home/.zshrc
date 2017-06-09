@@ -115,6 +115,15 @@ PROMPT="%(1j,%F{blue}JOBS%F{green}%j ,)\$(_pyvirt)%(0?,,%F{blue}?%F{green}%? )\$
 ,)$(_user_host)%F{green}%3~ %(30l,
 ,)%F{blue}%#%F{reset_color} "
 
+function change_prompt {
+    eval "$(/home/aaron/Projects/prompt/target/debug/prompt init)"
+    if [ ! -z "$VTE_VERSION" ]
+    then
+        . /etc/profile.d/vte-*.sh
+    fi
+}
+change_prompt
+
 export SUDO_PROMPT="$fg_bold[yellow][sudo password]$reset_color "
 which vimpager &> /dev/null && export PAGER=vimpager
 :

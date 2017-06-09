@@ -21,11 +21,9 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner  = "wkhtmltopdf";
     repo   = "wkhtmltopdf";
-    rev    = "e03f1d19f0543546fde2bbbb587e3b8c012a4cbb";
-    sha256 = "1pvakgix39zq812gjzbxad032r6kj5iyh05l8gk52yva03yw6ibm";
+    rev    = "67693eec7f6848efc0437cac1217cb1aec1ad303";
+    sha256 = "1b71s0hazd7zk6digm9q5hkx68yxv7qnllb9d4hdz68sd2pykkhp";
   };
-
-  wkQt = qt5.full;
 
   /*wkQt_widgets = qt5.full {
       name = "asdf";
@@ -135,7 +133,7 @@ stdenv.mkDerivation rec {
   });*/
 
   buildInputs = with xorg; [ fontconfig freetype libpng zlib libjpeg openssl
-                  libX11 libXext libXrender wkQt
+                  libX11 libXext libXrender qt57.full qt57.qtwebkit-plugins qt57.qtwebkit
                 ];
   configurePhase = "qmake wkhtmltopdf.pro INSTALLBASE=$out";
   /*
