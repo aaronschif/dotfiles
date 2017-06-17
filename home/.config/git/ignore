@@ -6,4 +6,5 @@
 /.tags
 /.tags1
 *~
+.mypy_cache
 .updateenv

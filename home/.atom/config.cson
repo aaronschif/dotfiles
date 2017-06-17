@@ -45,7 +45,6 @@
     ignoreErrorsAndWarnings: "D100,D101,D102,D103,E501,D203,D400"
   "linter-ui-default":
     panelHeight: 69
-    showPanel: true
   "live-doc-viewer":
     command1: {}
     command2: {}
