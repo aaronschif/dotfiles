@@ -18,14 +18,5 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/asciiquarium --set PERL5LIB $PERL5LIB
   '';
 
-  buildInputs = [perl perlPackages.Curses TermAnimation makeWrapper];
-
-    TermAnimation = buildPerlPackage {
-      name = "Term-Animation-2.6";
-      src = fetchurl {
-        url = https://cpan.metacpan.org/authors/id/K/KB/KBAUCOM/Term-Animation-2.6.tar.gz;
-        sha256 = "0idhhk89jg5z0h1klby7jwpdlap0pcn5wzyf3n5plrcv9wnkqp3x";
-      };
-      buildInputs = [perlPackages.Curses];
-    };
+  buildInputs = [perl perlPackages.Curses perlPackages.TermAnimation makeWrapper];
 }

@@ -12,3 +12,6 @@ fpath=(
     "/usr/share/zsh/vendor-completions/"
     $fpath)
 export NIX_PATH=nixpkgs=$HOME/.nix-defexpr/channels/nixpkgs:unstable=$HOME/Projects/nixpkgs
+
+gpgconf --launch gpg-agent
+SSH_AUTH_SOCK=/home/aaron/.gnupg/S.gpg-agent.ssh; export SSH_AUTH_SOCK;

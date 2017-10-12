@@ -1,13 +1,17 @@
 "*":
   "atom-ctags": {}
+  "atom-package-deps":
+    ignored: []
   "atom-typescript": {}
   "autocomplete-dcd": {}
   "autocomplete-python":
     extraPaths: "$PROJECT/apps"
+  "autocomplete-python-jedi":
+    outputProviderErrors: true
+    pythonPaths: "$PROJECT/venv/bin/python"
   core:
     disabledPackages: [
       "live-doc-viewer"
-      "language-python"
       "file-mode"
       "autocomplete-clang"
       "symbols-view"
@@ -18,6 +22,18 @@
       "atom-jade"
       "linter-pyflakes"
       "vim-mode-plus"
+      "autocomplete-python"
+      "linter"
+      "hyperclick"
+      "flow-ide"
+      "language-d"
+      "linter-flake8"
+      "linter-rust"
+      "minimap"
+      "racer"
+      "atom-typescript"
+      "MagicPython"
+      "autocomplete-python-jedi"
     ]
     ignoredNames: [
       "*~"
@@ -35,6 +51,7 @@
     tabLength: 4
   "exception-reporting":
     userId: "d2ef4277-532a-4a55-4567-10b5bedebbfc"
+  "ide-python": {}
   linter: {}
   "linter-clang": {}
   "linter-dscanner":
@@ -45,6 +62,7 @@
     ignoreErrorsAndWarnings: "D100,D101,D102,D103,E501,D203,D400"
   "linter-ui-default":
     panelHeight: 69
+    showPanel: true
   "live-doc-viewer":
     command1: {}
     command2: {}

@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     pkgconfig
-    qmakeHook
+    /*qmakeHook*/
   ];
 
   patches = [
