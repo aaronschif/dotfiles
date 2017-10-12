@@ -5,3 +5,4 @@
 .config/tilda
 .ssh
 .config/autostart
+.gnupg
