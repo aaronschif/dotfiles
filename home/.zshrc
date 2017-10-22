@@ -10,7 +10,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-if source antigen.zsh 2> /dev/null; then
+if source $HOME/.nix-profile/share/antigen/antigen.zsh 2> /dev/null; then
   antigen bundle zsh-users/zsh-completions src
   antigen bundle robbyrussell/oh-my-zsh plugins/taskwarrior
   antigen apply
@@ -116,11 +116,7 @@ PROMPT="%(1j,%F{blue}JOBS%F{green}%j ,)\$(_pyvirt)%(0?,,%F{blue}?%F{green}%? )\$
 ,)%F{blue}%#%F{reset_color} "
 
 function change_prompt {
-    eval "$(/home/aaron/Projects/prompt/target/debug/prompt init)"
-    if [ ! -z "$VTE_VERSION" ]
-    then
-        . /etc/profile.d/vte-*.sh
-    fi
+    eval "$(/home/aaronschif/Projects/prompt/target/debug/prompt init)"
 }
 change_prompt
 

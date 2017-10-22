@@ -52,6 +52,8 @@
   "exception-reporting":
     userId: "d2ef4277-532a-4a55-4567-10b5bedebbfc"
   "ide-python": {}
+  "ide-typescript":
+    javascriptSupport: false
   linter: {}
   "linter-clang": {}
   "linter-dscanner":

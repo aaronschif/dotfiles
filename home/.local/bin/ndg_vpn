@@ -18,4 +18,5 @@ with TemporaryFile() as tarfile_file, suppress(KeyboardInterrupt):
     with TemporaryDirectory() as tmp, TarFile(fileobj=tarfile_file) as tarfile:
         tarfile.extractall(path=tmp)
         chdir(str(tmp))
-        check_call(['openvpn', 'ndg_mcnc.ovpn'])
+        check_call(['sudo', 'openvpn', 'ndg_mcnc.ovpn'])
+
