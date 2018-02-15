@@ -1,5 +1,7 @@
 "*":
   "atom-ctags": {}
+  "atom-ide-ui":
+    "atom-ide-diagnostics-ui": {}
   "atom-package-deps":
     ignored: []
   "atom-typescript": {}
@@ -10,6 +12,7 @@
     outputProviderErrors: true
     pythonPaths: "$PROJECT/venv/bin/python"
   core:
+    allowPendingPaneItems: false
     disabledPackages: [
       "live-doc-viewer"
       "file-mode"
@@ -32,7 +35,6 @@
       "minimap"
       "racer"
       "atom-typescript"
-      "MagicPython"
       "autocomplete-python-jedi"
     ]
     ignoredNames: [
@@ -51,7 +53,12 @@
     tabLength: 4
   "exception-reporting":
     userId: "d2ef4277-532a-4a55-4567-10b5bedebbfc"
-  "ide-python": {}
+  "ide-flowtype":
+    tryFlowBin: true
+  "ide-python":
+    pylsPlugins:
+      pycodestyle:
+        maxLineLength: 120
   "ide-typescript":
     javascriptSupport: false
   linter: {}
@@ -91,6 +98,8 @@
     wrapLeftRightMotion: true
   welcome:
     showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
 ".hyperlink.text":
   editor:
     preferredLineLength: 100

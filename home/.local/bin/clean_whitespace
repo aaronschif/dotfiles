@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# https://stackoverflow.com/a/45486981/1813277
+git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -

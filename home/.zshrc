@@ -18,8 +18,6 @@ else
   print -P '%F{yellow}Antigen could not be found.%F{reset}'
 fi
 
-autoload -U _gitprompt
-
 autoload -Uz compinit
 compinit
 
@@ -48,24 +46,6 @@ alias ls='ls --color=auto --classify'
 alias la='ls --almost-all'
 alias l='ls'
 alias ll='ls -l --human-readable'
-
-precmd_functions+=_set_title_cmd
-preexec_functions+=_set_title_exec
-if [ -n "$SSH_CONNECTION" ]
-then
-  function _set_title_cmd { print -Pn "\e]0;%n@%m:%2~\a" }
-  function _set_title_exec { print -Pn "\e]0;%n@%m:%2~ "$(_short_function_name $'$1' )"\a"}
-else
-  function _set_title_cmd { print -Pn "\e]0;%2~\a" }
-  function _set_title_exec { print -Pn "\e]0;%2~ "$(_short_function_name $'$1' )"\a"}
-fi
-
-function _short_function_name {
-    case "$1" in
-        sudo\ *) echo -n "#${1#sudo}";;
-        *) echo -n "$ $1";;
-    esac
-}
 
 function _pyvirt {
   if [ -n "$VIRTUAL_ENV" ]
@@ -111,7 +91,7 @@ then
 fi
 
 setopt prompt_subst
-PROMPT="%(1j,%F{blue}JOBS%F{green}%j ,)\$(_pyvirt)%(0?,,%F{blue}?%F{green}%? )\$(_gitprompt)$(_depth)%(20l,
+PROMPT="%(1j,%F{blue}JOBS%F{green}%j ,)\$(_pyvirt)%(0?,,%F{blue}?%F{green}%? )$(_depth)%(20l,
 ,)$(_user_host)%F{green}%3~ %(30l,
 ,)%F{blue}%#%F{reset_color} "
 

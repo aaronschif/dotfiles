@@ -31,11 +31,11 @@ self: super:
 
 
       atom = super.stdenv.lib.overrideDerivation super.atom (oldAttrs: rec {
-          version = "1.20.0";
+          version = "1.22.0";
           name = "atom-${version}";
           src = super.fetchurl {
-              url = https://github.com/atom/atom/releases/download/v1.20.0/atom-amd64.deb;
-              sha256 = "1jzpa44ny78djdxc8d2w4jz1m68xmi8bzq87q3wmdffa4g9z4aa0";
+              url = https://github.com/atom/atom/releases/download/v1.22.0/atom-amd64.deb;
+              sha256 = "1jxw0m1hfaisf1f875wr28f0mr3h0wjml6pjhfxbybvcblpnd27k";
           };
       });
     };

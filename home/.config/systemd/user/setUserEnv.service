@@ -1,0 +1,10 @@
+[Unit]
+Description=Set environment
+
+[Service]
+ExecStart=%h/.local/bin/setEnv.py
+Type=oneshot
+
+[Install]
+WantedBy=default.target
+RequiredBy=graphical-session-pre.target user.slice
