@@ -13,9 +13,10 @@ let
         buildInputs = [super.makeWrapper];
         buildPhase = ''
             cp -r ${oldDrv}/ $out/
-            chmod +w $out/bin/* $out/bin/
-            for bin in $out/bin/*
+            chmod +w $out/bin/
+            for bin in $(find $out/bin/ -type f -executable)
             do
+                chmod +w $bin
                 patchelf --set-rpath ${glLib}/lib/:$(patchelf --print-rpath $bin) $bin || wrapProgram $bin --prefix LD_LIBRARY_PATH : "${glLib}/lib/"
             done
         '';
@@ -39,6 +40,7 @@ in
         mixxx = glFix super.mixxx;
         openspades = glFix super.openspades;
         minecraft = glFix super.minecraft;
+        multimc = glFix super.multimc;
         zeroad = glFixOther super.zeroad;
         inherit glLib;
     };

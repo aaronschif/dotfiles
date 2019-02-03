@@ -11,9 +11,11 @@ from contextlib import suppress
 path = Path(__file__).parent
 
 with TemporaryFile() as tarfile_file, suppress(KeyboardInterrupt):
-    tarfile_data = check_output(['pass', 'show', 'ndg/vpn'])
+#    tarfile_data = check_output(['pass', 'show', 'ndg/vpn'])
+    tarfile_data = check_output(['gpg2', '--decrypt', '/home/aaronschif/.password-store/ndg/vpn.gpg'])
     tarfile_file.write(tarfile_data)
     tarfile_file.seek(0)
+
 
     with TemporaryDirectory() as tmp, TarFile(fileobj=tarfile_file) as tarfile:
         tarfile.extractall(path=tmp)

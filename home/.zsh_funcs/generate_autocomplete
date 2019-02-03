@@ -1,1 +1,6 @@
+kubectl completion zsh > ~/.zsh_funcs/_kubectl
+minikube completion zsh > ~/.zsh_funcs/_minikube
+helm completion zsh > ~/.zsh_funcs/_helm
+
+pip completion --zsh > ~/.zsh_funcs/_pip
 pipenv --completion > ~/.zsh_funcs/_pipenv

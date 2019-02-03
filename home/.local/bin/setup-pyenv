@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pip install wheel
+pip install -U pip ipython flake8 pipenv wheel isort black 'python-language-server[all]' #pyls-mypy

@@ -87,7 +87,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=true
 
 if [ ! -z "$VTE_VERSION" ]
 then
-    . /etc/profile.d/vte-*.sh
+    . /etc/profile.d/vte*.sh
 fi
 
 setopt prompt_subst

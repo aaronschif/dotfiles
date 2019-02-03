@@ -2,6 +2,7 @@
   "atom-ctags": {}
   "atom-ide-ui":
     "atom-ide-diagnostics-ui": {}
+    use: {}
   "atom-package-deps":
     ignored: []
   "atom-typescript": {}
@@ -37,16 +38,9 @@
       "atom-typescript"
       "autocomplete-python-jedi"
     ]
-    ignoredNames: [
-      "*~"
-      "*.pyc"
-      "*.pyo"
-      ".python-version"
-      "__pycache__"
-    ]
     telemetryConsent: "limited"
   editor:
-    fontFamily: "Hack, monospace, NovaMono"
+    fontFamily: "Hack, Overpass Mono, monospace, NovaMono"
     invisibles: {}
     preferredLineLength: 100
     showInvisibles: true

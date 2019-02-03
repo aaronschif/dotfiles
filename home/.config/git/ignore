@@ -6,6 +6,7 @@
 /.tags
 /.tags1
 /.ropeproject
+.venv
 *~
 .mypy_cache
 .updateenv

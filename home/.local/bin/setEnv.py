@@ -32,8 +32,8 @@ async def source_file(vars, path):
             break
 
     result = {}
-    while not data.stdout.at_eof():
-        line = await data.stdout.readline()
+    for line in (await data.stdout.read()).split(b'\0'):
+        print(line)
         k, v = line.decode('utf-8').split('=', 1)
         if k in vars:
             result[k] = v

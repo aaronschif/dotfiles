@@ -1,4 +1,0 @@
-#!/bin/bash
-
-pip install wheel
-pip install -U flake8 pip wheel python-language-server pyls-mypy
